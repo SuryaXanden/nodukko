@@ -36,10 +36,12 @@ async function scrape_snapdeal(handle_snapdeal)
 	});
 }
 
-
+var RESULTS = [];
 function end(arr)
 {
-	arr.forEach(i => console.log(i));
+	//arr.forEach(i => console.log(i));
+	RESULTS.push(arr);	
+	return {"data" : RESULTS};
 }
 
 async function handle_snapdeal(that,cb)
@@ -118,7 +120,7 @@ async function handle_snapdeal(that,cb)
 							"title" : tit[i]
 							});
 	}	
-	end(arr);
+	console.log(end(arr));
 }
 
 async function scrape_flipkart(cb)
@@ -241,7 +243,7 @@ async function handle_flipkart(that,cb)
 function call_all()
 {
 	scrape_snapdeal(handle_snapdeal);
-	scrape_flipkart(handle_flipkart);
+	// scrape_flipkart(handle_flipkart);
 	// let z =  amazon();
 }
 call_all();
